@@ -14,20 +14,20 @@ public class Main {
     }
 
     public static boolean hasDup2(String s) {
-        int total = 'z', prev = 'y';
+        long x = 0;
         for (char c : s.toCharArray()) {
-            prev = total;
-            total = total ^ c;
-            if (total - prev == c) {
-                System.out.printf("dup: total - prev = %d %c\n", total-prev, total-prev);
+            long mask = (long) Math.pow(2, c - 'a');
+            if ((x & mask) != 0) {
+                System.out.println("dup " + c);
                 return true;
             }
+            x |= mask;
         }
         return false;
     }
 
     public static void main(String[] args) {
-        String s = "hello";
+        String s = "abcdefghijklmnopqrstuvwxyza";
 
         System.out.println(hasDup2(s) ? "DUP" : "NO DUP");
     }
