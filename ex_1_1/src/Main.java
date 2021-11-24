@@ -16,7 +16,7 @@ public class Main {
     public static boolean hasDup2(String s) {
         long x = 0;
         for (char c : s.toCharArray()) {
-            long mask = (long) Math.pow(2, c - 'a');
+            long mask = (long) Math.pow(2, c - 'a'); // 1 << (c - 'a')
             if ((x & mask) != 0) {
                 System.out.println("dup " + c);
                 return true;
