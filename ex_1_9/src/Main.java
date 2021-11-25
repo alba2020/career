@@ -38,9 +38,16 @@ public class Main {
         return isSubstring(s2, allSubs(s1));
     }
 
+    public static boolean check2(String s2, String s1) {
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+        return isSubstring(s1, s2 + s2);
+    }
+
     public static void main(String[] args) {
         String s1 = "world";
         String s2 = "rldwo";
-        System.out.println(check(s2, s1));
+        System.out.println(check2(s1, s2));
     }
 }

@@ -15,7 +15,6 @@ public class Main {
         return String.valueOf(arr, j - i, arr.length - j - 1);
     }
 
-
     public static int lastSymPos(char[] arr) {
         for (int i = arr.length - 1; i >= 0; i--) {
             if (arr[i] != ' ') return i;
