@@ -10,19 +10,37 @@ public class Main {
         System.out.println();
     }
 
-    public static Node removeDups(Node head) {
-        Node n = head;
-        HashSet<Integer> h = new HashSet<>();
-        h.add(n.data);
-        while (n.next != null) {
-            if (h.contains(n.next.data)) {
-                n.next = n.next.next;
+    public static void removeDupsHash(Node n) {
+        HashSet<Integer> h = new HashSet<Integer>();
+        Node prev = null;
+        while (n != null) {
+            if (h.contains(n.data)) {
+                prev.next = n.next;
             } else {
-                h.add(n.next.data);
+                h.add(n.data);
+                prev = n;
             }
             n = n.next;
         }
-        return head;
+    }
+
+    public static void removeDupsSlow(Node head) {
+        Node n = head;
+        while (n != null) {
+            while (n.next != null && listContains(n.next.data, head, n.next)) {
+                n.next = n.next.next;
+            }
+            n = n.next;
+        }
+    }
+
+    public static boolean listContains(int val, Node from, Node to) {
+        for (Node n = from; n != null && n != to; n = n.next) {
+            if (n.data == val) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
@@ -30,10 +48,11 @@ public class Main {
         head1.appendToTail(2);
         head1.appendToTail(3);
         head1.appendToTail(2);
-        head1.appendToTail(2);
-        print(head1);
+        head1.appendToTail(1);
+        head1.appendToTail(5);
 
-        removeDups(head1);
+        print(head1);
+        removeDupsHash(head1);
         print(head1);
     }
 }
