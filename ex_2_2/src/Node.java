@@ -6,29 +6,14 @@ class Node {
         data = d;
     }
 
-    void appendToTail(int d) {
+    Node append(int d) {
         Node end = new Node(d);
         Node n = this;
         while (n.next != null) {
             n = n.next;
         }
         n.next = end;
-    }
 
-    static Node deleteNode(Node head, int d) {
-        Node n = head;
-
-        if (n.data == d) {
-            return head.next; /* начальный узел изменился */
-        }
-
-        while (n.next != null) {
-            if (n.next.data == d) {
-                n.next = n.next.next;
-                return head; /* начальный узел не изменился */
-            }
-            n = n.next;
-        }
-        return head;
+        return this;
     }
 }
