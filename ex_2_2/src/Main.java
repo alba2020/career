@@ -8,21 +8,37 @@ public class Main {
         System.out.println();
     }
 
-    public static Node findK(Node start) {
-        int i = 0;
-        Node n = start;
-        while(n != null) {
-            n = n.next;
-            i++;
+    public static Node findK(int k, Node start) {
+        Node fast = start;
+        Node slow = start;
+        for (int i = 0; i < k; i++) {
+            if (fast == null) {
+                return null;
+            }
+            fast = fast.next;
         }
+        while(fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
     }
 
     public static void main(String[] args) {
         Node head1 = new Node(1);
-        for (int i = 2; i < 45; i++) {
+        for (int i = 2; i < 15; i++) {
             head1.append(i);
         }
         print(head1);
+
+        Node found = findK(1, head1);
+        System.out.println(found != null ? found.data : "not found");
+
+        found = findK(2, head1);
+        System.out.println(found != null ? found.data : "not found");
+
+        found = findK(125, head1);
+        System.out.println(found != null ? found.data : "not found");
     }
 }
 
