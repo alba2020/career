@@ -21,18 +21,7 @@ public class Node {
                 str(node.right) + ")";
     }
 
-    // bug
-    public static boolean isBST(Node node) {
-        if (node.left != null) {
-            if (!isBST(node.left) || node.left.key >= node.key) {
-                return false;
-            }
-        }
-        if (node.right != null) {
-            if (!isBST(node.right) || node.right.key < node.key) {
-                return false;
-            }
-        }
-        return true;
+    public static Node next(Node node) {
+        return node;
     }
 }

@@ -8,17 +8,15 @@ public class Main {
         Node four = new Node(4);
         Node five = new Node(5);
         Node six = new Node(6);
-        Node seven = new Node(7);
 
-        Node root = four;
-        four.left = two;
+        three.left = two;
         two.left = one;
-        two.right = five;
-        four.right = six;
-        six.left = three;
-        six.right = seven;
+        three.right = five;
+        five.left = four;
+        five.right = six;
 
-        System.out.println(Node.str(root));
-        System.out.println(Node.isBST(root));
+        System.out.println(Node.str(three));
+
+        // todo Node.next
     }
 }
