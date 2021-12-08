@@ -21,18 +21,39 @@ public class Node {
                 str(node.right) + ")";
     }
 
-    // bug
+    private static class Data {
+        int min;
+        int max;
+        boolean isBST;
+
+        public Data(int min, int max, boolean isBST) {
+            this.min = min;
+            this.max = max;
+            this.isBST = isBST;
+        }
+    }
+
     public static boolean isBST(Node node) {
+        return _isBST(node).isBST;
+    }
+
+    // bug
+    private static Data _isBST(Node node) {
+        if (node.left == null && node.right == null)
+            return new Data(node.key, node.key, true);
+
         if (node.left != null) {
-            if (!isBST(node.left) || node.left.key >= node.key) {
-                return false;
+            Data leftData = _isBST(node.left);
+            if (!leftData.isBST || leftData.max >= node.key) {
+                return new Data(0, 0, false);
             }
         }
         if (node.right != null) {
-            if (!isBST(node.right) || node.right.key < node.key) {
-                return false;
+            Data rightData = _isBST(node.right);
+            if (!rightData.isBST || rightData.min < node.key) {
+                return new Data(0, 0, false);
             }
         }
-        return true;
+        return true; //???
     }
 }
