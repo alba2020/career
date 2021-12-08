@@ -1,5 +1,3 @@
-package src;
-
 public class Node {
     public int key;
     public Node left;
@@ -37,11 +35,7 @@ public class Node {
         return _isBST(node).isBST;
     }
 
-    // bug
     private static Data _isBST(Node node) {
-        if (node.left == null && node.right == null)
-            return new Data(node.key, node.key, true);
-
         if (node.left != null) {
             Data leftData = _isBST(node.left);
             if (!leftData.isBST || leftData.max >= node.key) {
@@ -54,6 +48,9 @@ public class Node {
                 return new Data(0, 0, false);
             }
         }
-        return true; //???
+        return new Data(
+                node.left != null ? node.left.key : node.key,
+                node.right != null ? node.right.key : node.key,
+                true);
     }
 }

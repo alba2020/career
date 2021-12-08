@@ -1,4 +1,3 @@
-package src;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,9 +12,9 @@ public class Main {
         Node root = four;
         four.left = two;
         two.left = one;
-        two.right = five;
+        two.right = three;
         four.right = six;
-        six.left = three;
+        six.left = five;
         six.right = seven;
 
         System.out.println(Node.str(root));
